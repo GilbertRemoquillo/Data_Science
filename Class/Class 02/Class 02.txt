@@ -1,0 +1,6 @@
+Class02
+Array = Vector
+Scalar = 1 number
+Convoluntional Networks
+mean meadian mode
+variance and standard deviation
