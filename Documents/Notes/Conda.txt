@@ -1,0 +1,16 @@
+Run in Anaconda Prompt
+conda -V
+conda update conda -y
+conda install anaconda-client -y
+conda env create thisismetis/metis
+
+conda info
+conda activate metis
+jupyter notebook
+
+You can update your metis environment at any time by running
+conda env update thisismetis/metis
+
+
+
+

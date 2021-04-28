@@ -1,0 +1,277 @@
+User: g.remoquillo@gmail.com
+Pass: P@ssword02
+
+
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  
+
+  
+Open Git Bash or Source tree terminal
+Git status
+git branch -a
+git checkout master
+git pull origin master
+git checkout develop
+git pull origin develop
+
+
+$ git --version 														#git version 2.31.1.windows.1
+$ git update-git-for-windows 											#To update git to the latest version
+$ git config --list 													#To get username and email
+$ git config --global user.name "Gilbert Remoquillo"					#To set the username
+$ git config --global user.email "g.remoquillo@gmail.com"				#To set the email
+
+Setup Line Ending Preferences
+git config --global core.autocrlf true
+git config --global core.safecrlf true
+												
+$ cd C:\DEV																#Go to C:\DEV
+$ cd ..																	#Move directory up
+$ rm -rf metis_fundamentals												#Remove a repository
+$ git clone https://github.com/thisismetis/metis_fundamentals.git		#Cloning the repository
+$ cd metis_fundamentals/												#Open the newly created clone
+$ git pull origin main													#Get the updated copy form Git
+$ git remote -v
+$ git remote add upstream https://github.com/thisismetis/metis_fundamentals.git
+
+
+$ git remote add origin https://github.com/GilbertRemoquillo/my_first_repo
+
+$ git pull upstream main
+$ git push origin main
+
+
+
+To commit
+git status
+git add <filename>		#\*.txt
+git add .			#adding in all the changes to the files in the current directory and below.
+git add -A 			#Add all files including sub folders
+git reset #command can be used to unstage that change
+git commit - m "Adding comment"
+
+
+
+
+
+To restore from previous commits
+git log #list all commits
+git log --pretty=oneline #log command displays like one line format
+git reset --hard 23cf77df733171e
+
+
+
+#Create a local copy and Git repository
+Downloaded https://github.com/Metis-KPAU/IDS1_190421 as ZIP file
+Extracted to C:\DEV\Metis-KPAU_IDS1_190421
+Open Git Bash, browse to C:\DEV\Metis-KPAU_IDS1_190421
+git init
+git status
+git add <filename>	#\*.txt
+git add -A 			#Add all file
+git commit - m "Adding comment"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Log
+git log #list all commits
+git log --pretty=oneline #log command displays like one line format
+git log --pretty=oneline --max-count=2
+git log --pretty=oneline --since='5 minutes ago'
+git log --pretty=oneline --until='5 minutes ago'
+git log --pretty=oneline --author=<your name>
+git log --pretty=oneline --all
+git log --all --pretty=format:'%h %cd %s (%an)' --since='7 days ago' --not working
+git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+
+--pretty="..." defines the format of the output.
+%h is the abbreviated hash of the commit
+%d are any decorations on that commit (e.g. branch heads or tags)
+%ad is the author date
+%s is the comment
+%an is the author name
+--graph informs git to display the commit tree in an ASCII graph layout
+--date=short keeps the date format nice and short
+
+
+#Get the hashes for previous versions
+git hist
+git checkout <hash>
+cat <filename>
+
+#Return the latest version in the master branch
+git checkout <master or main>
+git checkout <filename>
+
+#Tagging 
+git tag v1				#Now you can refer to the current version of the program as v1.
+git checkout v1^		#checkout the previous version using ^  notation 
+git tag v1-beta			#this is the version with the default value before the comment, add tag v1-beta
+
+git checkout v1			#checout using tag
+git checkout v1-beta	#checout using tag
+cat hello.rb			#Display the file
+
+git tag					#see what tags are available
+git hist main --all
+
+
+
+#Undoing Local Changes (before staging)
+git checkout main		#Make sure you are on the latest commit in master before proceeding.
+git status				#Check the status
+#made changes to a file
+git checkout <filename>	#To restore the original file and remove the changes made in local copy
+
+
+#Undoing Staged Changes(before committing)
+#made changes to a file
+git status				#Check the status
+git add -A				#stage all the changes
+git status				#Check the status
+git reset <filename>	#unstage the change
+
+
+#Undoing Committed Changes
+#revert changes that have been committed to a local repository
+git revert HEAD				#removes the changes
+git revert HEAD --no-edit	#generate the output without opening the editor.
+
+
+#Removing Commits from a Branch
+git log 							#list all commits
+git hist							#list all commits (Custimized)
+git reset --hard 23cf77df733171e	#Reset using hash key
+git reset --hard v1					#Reset using tag
+git hist							#Check commit history
+
+
+#Removing tag
+git tag -d <tag name>		#remove it and allow the commits it referenced to be garbage collected
+
+
+#Amend the Previous Commit
+git commit --amend -m "Add an author/email comment"
+
+
+#Git Internals: The .git directory
+ls -C .git					#root of your project directory
+ls -C .git/objects			#The Object Store
+ls -C .git/objects/<dir>	#Deeper into the Object Store
+cat .git/config				#This is a project-specific configuration file. Config entries in here will override the config entries in the .gitconfig file in your home directory, at least for this project.
+#Branches and Tags
+ls .git/refs
+ls .git/refs/heads
+ls .git/refs/tags
+cat .git/refs/tags/v1
+cat .git/HEAD				#HEAD file contains a reference to the current branch. It should be a reference to master/main at this point.
+
+
+
+#Finding the Latest Commit
+git hist --max-count=1		#show the latest commit made in the repository (SHA1 hash)
+git cat-file -t <hash>		#Type
+git cat-file -p <hash>		#Dump
+git type <hash>				#Using alias
+git dump <hash>				#Using alias
+git cat-file -p <treehash>	#Finding the tree
+git dump ea233cdd342d57
+
+
+#Creating a Branch
+git checkout -b <branchname>			#is a shortcut for git branch <branchname> followed by a git checkout <branchname>
+git status
+git add lib/greeter.rb					#Add new file
+git commit -m "Added greeter class"		#Commit
+git add lib/hello.rb					#Modify the main and commit
+git commit -m "Hello uses Greeter"
+
+
+#Merging
+git checkout greet		#go back to the greet branch
+git merge master		#merge master onto greet
+	press "i" (i for insert)
+	write your merge message
+	press "esc" (escape)
+	write ":wq" (write & quit)
+	then press enter
+git hist --all			#press q when (END) shows
+
+
+
+#Resolving Conflicts
+git checkout my_new_branch 	#Go to branch 
+git merge main				#Merge to main
+
+
+#Remote repositories
+git remote					#Remote repository named origin
+git remote show origin		#Information about origin
+
+
+#Remote Branches
+git branch				#The git branch command only lists the local branches by default.
+git branch -a			#All the commits from the original repository, but branches in the remote repository are not treated as local branches
+
+
+#Merging Pulled Changes
+git fetch					#Will fetch new commits from the remote repository, but it will not merge these commits into the local branches.
+git merge origin/master		#Merge the fetched changes into local master
+git pull					#is equivalent to a git fetch followed by a git merge.				
+
+
+
+#Adding a Tracking Branch
+git branch --track greet origin/my_new_branch			#Add a local branch that tracks a remote branch.
+git branch -a
+git hist --max-count=2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

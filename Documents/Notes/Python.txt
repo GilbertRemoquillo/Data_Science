@@ -1,0 +1,8 @@
+// flawed
+** exodus
+% remainder/modulus
+
+\ escape
+\n new line
+\t tab
+r"some text" raw string

@@ -1,0 +1,25 @@
+VSCode
+Activity Bar - Left
+View>>Command Palette - Crt+Shift+P
+
+- You can create cells on a Python file by typing "#%%"
+- Use "Shift + Enter " to run a cell, the output will be shown in the interactive window
+
+
+C:\Users\Yourusername\Dev\django_project_boilerplate\env\Scripts\python.exe: can't open file 'c:UsersYourusername.vscodeextensionsms-python.python-2020.6.89148pythonFilespyvsc-run-isolated.py': [Errno 2] No such file or directory
+c:/Users/Yourusername/Dev/django_project_boilerplate/env/Scripts/python.exe c:\Users\Yourusername\.vscode\extensions\ms-python.python-2020.6.89148\pythonFiles\pyvsc-run-isolated.py pip install -U mypy 
+
+c:UsersYourusername.vscodeextensionsms-python.python-2020.6.89148pythonFilespyvsc-run-isolated.py': [Errno 2] No such file or directory
+
+
+
+C:\Users\GRemoquillo\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages\jedi\third_party\typeshed\third_party\2and3\requests\packages\urllib3\packages\ssl_match_hostname\_implementation.pyi
+
+python.exe , 'c:\Users\GRemoquillo\.vscode\extensions\ms-python.python-2021.4.765268190\pythonFiles\pyvsc-run-isolated.py', 'pip', 'install', '-U', 'ipykernel', '--user'
+
+python -m pip install -U  ipykernel
+ERROR: Could not install packages due to an OSError: [Errno 2] No such file or directory: 
+'C:\\Users\\GRemoquillo\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python39\\site-packages\\jedi\\third_party\\typeshed\\third_party\\2and3\\requests\\packages\\urllib3\\packages\\ssl_match_hostname\\_implementation.pyi'
+
+
+octothorpe #
